@@ -15,9 +15,12 @@ def new_product():
 
 
 def main():
-    new_product()
+    product1 = new_product()
     gameItem = Games(int(input("Enter product ID: ")))
     print(gameItem.get_item('games'))
+    productList = product1.show_products()
+    print(productList)
+
 
 
 if __name__ == "__main__":

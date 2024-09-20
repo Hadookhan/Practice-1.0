@@ -29,6 +29,12 @@ class Products:
     
     def clear_basket(self):
         return Products.basket.clear()
+    
+    def show_products(self):
+        itemList = {}
+        for item in stock.items:
+            itemList[item] = stock.items[item]
+        return itemList
 
 class Games(Products):
     def __init__(self, itemID):

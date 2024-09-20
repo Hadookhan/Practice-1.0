@@ -7,10 +7,10 @@ class Products:
     def __init__(self, itemID):
         self.__itemID = itemID
     
-    def get_item(self):
+    def get_item(self,item_type):
         itemID = self.__itemID
-        for game in stock.games:
-            if itemID == stock.games[game]:
+        for game in stock.items[item_type]:
+            if itemID == stock.items[item_type][game]:
                 return game
         raise Exception("Please specify a game ID")
     
@@ -33,10 +33,13 @@ class Products:
 class Games(Products):
     def __init__(self, itemID):
         super().__init__(itemID)
-        self.stock = len(stock.games)
+        self.stock = len(stock.items['games'])
 
-    def get_item(self):
-        return super().get_item()
+    def get_item(self,item_type):
+        for items in stock.items:
+            if items == 'games':
+                item_type = items
+                return super().get_item(item_type)
     
     def add_item(self, item):
         return super().add_item(item)
